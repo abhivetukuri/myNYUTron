@@ -158,17 +158,17 @@ class DataProcessingModule:
     """
     reads a dataset from a folder containing csv files for data splits
     """
-    if type(data.data) == Dataset:
-        return data.data
-    else:
-        data_dict = {}
-        for file_name in glob.glob(os.path.join(data.path, "*.csv")):
-            split_name = os.path.basename(file_name).split('.')[0]
-            data_dict[split_name] = file_name
-        if len(data_dict) == 0:
-            raise ValueError(f"No csv files found in {data.path}")
-        print(f"data_dict is {data_dict}")
-        return Dataset.from_csv(data_dict)
+        if type(data.data) == Dataset:
+            return data.data
+        else:
+            data_dict = {}
+            for file_name in glob.glob(os.path.join(data.path, "*.csv")):
+                split_name = os.path.basename(file_name).split('.')[0]
+                data_dict[split_name] = file_name
+            if len(data_dict) == 0:
+                raise ValueError(f"No csv files found in {data.path}")
+            
+            return Dataset.from_csv(data_dict)
 
 
 class DfSubsetModule(DataProcessingModule):
