@@ -155,9 +155,9 @@ class DataProcessingModule:
                     raise NotImplementedError(f"unrecognized file type {f}")
 
     def get_hf_dataset_from_folder(self, data: DataProcessingModuleExchange) -> Dataset:
-    """
-    reads a dataset from a folder containing csv files for data splits
-    """
+        """
+        reads a dataset from a folder containing csv files for data splits
+        """
         if type(data.data) == Dataset:
             return data.data
         else:
